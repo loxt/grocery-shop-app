@@ -37,5 +37,26 @@ class CartModel extends ChangeNotifier {
         color: Colors.blue)
   ];
 
+  final List<ShopItem> _cartItems = [];
+
   get shopItems => _shopItems;
+  get cartItems => _cartItems;
+
+  void addItemToCart(int index) {
+    _cartItems.add(_shopItems[index]);
+    notifyListeners();
+  }
+
+  void removeItemFromCart(int index) {
+    _cartItems.removeAt(index);
+    notifyListeners();
+  }
+
+  String calculateTotal() {
+    double totalPrice = 0;
+    for (int i = 0; i < _cartItems.length; i++) {
+      totalPrice += double.parse(_cartItems[i].price);
+    }
+    return totalPrice.toStringAsFixed(2);
+  }
 }
