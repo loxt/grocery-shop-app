@@ -67,7 +67,7 @@ class CartPage extends StatelessWidget {
                         child: Text("You don't have items!"),
                       ),
                 value.cartItems.length == 0
-                    ? Center()
+                    ? const Center()
                     : Padding(
                         padding: const EdgeInsets.all(36.0),
                         child: Container(
